@@ -1,4 +1,4 @@
-function convertToChart(sessions){
+function convertToChartData(sessions){
   //need to know labels
   var labels = [];
   var labelSet = {};
@@ -62,3 +62,38 @@ function convertToChart(sessions){
   return chartData;
 }
 
+function createOutcomeChart(div, title, data){
+  var chartConfig = createConfig(data,title);
+  return new Chart(document.getElementById(div), chartConfig);
+}
+
+function createConfig(data, title){
+  return {
+    type: 'radar',
+    data: convertToChartData(data),
+    options: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: title
+      },
+      scale: {
+        ticks: {
+          beginAtZero: true
+        }
+      },
+      tooltips:{
+        enabled:true,
+        callbacks:{
+          label: function(tooltipItem, data){
+            var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+            //This will be the tooltip.body
+            return datasetLabel + ': ' + tooltipItem.yLabel +': '+ data.datasets[tooltipItem.datasetIndex].notes[tooltipItem.index];
+          }
+        }
+      }
+    }
+  };
+}
