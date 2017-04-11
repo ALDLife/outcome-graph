@@ -1,3 +1,9 @@
+`use strict`
+
+var moment = require('moment');
+var Chart = require('chart.js');
+var randomColor = requrie('randomcolor');
+
 function convertToChartData(sessions){
   //need to know labels
   var labels = [];
@@ -62,7 +68,7 @@ function convertToChartData(sessions){
   return chartData;
 }
 
-function createOutcomeChart(div, title, data){
+function createOutcomeGraph(div, title, data){
   var chartConfig = createConfig(data,title);
   return new Chart(document.getElementById(div), chartConfig);
 }
@@ -97,3 +103,5 @@ function createConfig(data, title){
     }
   };
 }
+
+module.exports.createOutcomeGraph = createOutcomeGraph;
