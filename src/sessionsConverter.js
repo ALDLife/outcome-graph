@@ -3,6 +3,7 @@
 var color = require('chartjs-color');
 var moment = require('moment');
 var randomColor = require('randomcolor');
+var distinctColors = require('distinct-colors')
 
 // module pattern
 var sessionsConverter = function (){
@@ -18,13 +19,17 @@ var sessionsConverter = function (){
 
   function getConvertedSessions(sessions){
     var convertedSessions = [];
+    // get distinct colours of all the different ones we could have
+    var differentColours = distinctColors({count: sessions.length});
     sessions.forEach(function(session){
-      convertedSessions.push(getConvertedSession(session));
+      //remove the first element each time
+      var sessionColour = differentColours.splice(0, 1)[0];
+      convertedSessions.push(getConvertedSession(session, sessionColour));
     });
     return convertedSessions;
   }
 
-  function getConvertedSession(session){
+  function getConvertedSession(session, chartColour){
     var now = moment(); // current time
 
     var outcomes = session.outcomes;
@@ -44,10 +49,7 @@ var sessionsConverter = function (){
     convertedSession.data = extractedDataAndNotes.data;
     convertedSession.notes = extractedDataAndNotes.notes;
 
-    //assign random colour to chart
-    var colour = randomColor({
-      format: 'rgba'
-    });
+    var colour = color().rgb(chartColour.rgba()).rgbString();
     convertedSession.backgroundColor = color(colour).alpha(0.2).rgbString();
     convertedSession.borderColor = colour;
     convertedSession.pointBackgroundColor = colour;
