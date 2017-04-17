@@ -1,15 +1,14 @@
-`use strict`
+'use strict'
 
-var moment = require('moment');
 var Chart = require('chart.js');
-var randomColor = requrie('randomcolor');
+var sessionsConverter = require('./sessionsConverter.js');
 
-function createOutcomeGraph(div, title, data){
-  var chartConfig = createConfig(data,title);
+function getOutcomeGraph(div, title, data){
+  var chartConfig = getConfig(data,title);
   return new Chart(document.getElementById(div), chartConfig);
 }
 
-function createConfig(data, title){
+function getConfig(data, title){
   return {
     type: 'radar',
     data: sessionsConverter.getChartJSConvertedData(data),
@@ -32,7 +31,7 @@ function createConfig(data, title){
           label: function(tooltipItem, data){
             var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
             //This will be the tooltip.body
-            return datasetLabel + ': ' + tooltipItem.yLabel +': '+ data.datasets[tooltipItem.datasetIndex].notes[tooltipItem.index];
+            return datasetLabel + ' : ' + tooltipItem.yLabel +' : '+ data.datasets[tooltipItem.datasetIndex].notes[tooltipItem.index];
           }
         }
       }
@@ -40,4 +39,4 @@ function createConfig(data, title){
   };
 }
 
-module.exports.createOutcomeGraph = createOutcomeGraph;
+module.exports.getOutcomeGraph = getOutcomeGraph;
