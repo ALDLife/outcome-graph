@@ -1,3 +1,5 @@
+'use strict'
+
 // module pattern
 var sessionsConverter = (function(){
   // variable to keep track of different labels
@@ -30,6 +32,7 @@ var sessionsConverter = (function(){
 
     convertedSession.label = humanisedTimestamp;
 
+    // adding the values map to converted session for developer to view for possible debugging
     convertedSession.valuesMap = getValuesMapsFromOutcomes(outcomes);
 
     // extract data and notes arrays
@@ -50,13 +53,14 @@ var sessionsConverter = (function(){
     return convertedSession;
   }
 
+  // this creates a mapping of the data value as well as notes for each label
+  // to be later used to create the ChartJS data array
   function getValuesMapsFromOutcomes(outcomes){
     var dataMap = {};
     var noteMap = {};
     // add each outcome to a set
     outcomes.forEach(function(outcome){
-      var lowerCaseLabel = outcome.outcome.toLowerCase();
-      updateLabelSet(outcome.outcome);
+      var lowerCaseLabel = updateLabels(outcome.outcome);
       dataMap[lowerCaseLabel] = outcome.value;
       noteMap[lowerCaseLabel] = outcome.notes;
     });
@@ -67,15 +71,18 @@ var sessionsConverter = (function(){
   }
 
   // check if our set has the value or not
-  function updateLabelSet(potentialLabel){
+  function updateLabels(potentialLabel){
     var lowerCaseLabel = potentialLabel.toLowerCase();
     if(!labelSet.hasOwnProperty(lowerCaseLabel)){
       labels.push(potentialLabel);
       // now value is in our set
       labelSet[lowerCaseLabel] = true;
     }
+    return lowerCaseLabel;
   }
 
+  // Use values map to create the data and notes arrays confroming to 
+  // ChartJS requirements. 
   function getExtractedDataAndTooltipNotes(valuesMap){
     // go over currently added labels
     var data = [];
