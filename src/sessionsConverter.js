@@ -1,7 +1,11 @@
 'use strict'
 
+var color = require('chartjs-color');
+var moment = require('moment');
+var randomColor = require('randomcolor');
+
 // module pattern
-var sessionsConverter = (function(){
+var sessionsConverter = function (){
   // variable to keep track of different labels
   var labels = [];
   // labels set for checking if label is unique
@@ -40,8 +44,6 @@ var sessionsConverter = (function(){
     convertedSession.data = extractedDataAndNotes.data;
     convertedSession.notes = extractedDataAndNotes.notes;
 
-
-    var color = Chart.helpers.color;
     //assign random colour to chart
     var colour = randomColor({
       format: 'rgba'
@@ -118,4 +120,6 @@ var sessionsConverter = (function(){
       return chartData;
     }
   };
-})();
+};
+
+module.exports = new sessionsConverter();
