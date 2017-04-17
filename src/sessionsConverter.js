@@ -2,11 +2,10 @@
 
 var color = require('chartjs-color');
 var moment = require('moment');
-var randomColor = require('randomcolor');
 var distinctColors = require('distinct-colors')
 
 // module pattern
-var sessionsConverter = function (){
+module.exports = function (){
   // variable to keep track of different labels
   var labels = [];
   // labels set for checking if label is unique
@@ -123,5 +122,3 @@ var sessionsConverter = function (){
     }
   };
 };
-
-module.exports = new sessionsConverter();
