@@ -1,7 +1,7 @@
 'use strict'
 
 var Chart = require('chart.js');
-var sessionsConverter = require('./sessionsConverter.js');
+var sessionsConverter = require('./sessionsConverter.js')();
 
 function getOutcomeGraph(div, title, data){
   var chartConfig = getConfig(data,title);
