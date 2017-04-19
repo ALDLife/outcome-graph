@@ -15,5 +15,12 @@
     "chartjs-color": "2.1.0",
     "distinct-colors": "1.0.4",
     "moment": "2.18.1"
+  },
+  "devDependencies": {
+    "browserify": "14.3.0"
+  },
+  "scripts": {
+    "build:module":"browserify ./src/index.js --standalone outcomeGraph --ignore chart.js --ignore moment --ignore chartjs-color --ignore distinct-colors > ./dist/outcome-graph.js",
+    "build:bundle":"browserify ./src/index.js --standalone outcomeGraph > ./dist/outcome-graph.bundle.js"
   }
 }
