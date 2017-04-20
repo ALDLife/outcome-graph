@@ -1,3 +1,3 @@
 window.onload = function() {
-  window.myRadar = createOutcomeGraph("canvas", "Outcome Graph", testData);
+  window.myRadar = outcomeGraph.getOutcomeGraph("canvas", "Outcome Graph", testData);
 };
