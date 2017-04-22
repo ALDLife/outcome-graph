@@ -1,20 +1,20 @@
-'use strict'
+'use strict';
 
 var Chart = require('chart.js');
 var sessionsConverter = require('./sessionsConverter.js')();
 
-function getOutcomeGraph(div, title, data){
-  var chartConfig = getConfig(data,title);
+function getOutcomeGraph(div, title, data) {
+  var chartConfig = getConfig(data, title);
   return new Chart(document.getElementById(div), chartConfig);
 }
 
-function getConfig(data, title){
+function getConfig(data, title) {
   return {
     type: 'radar',
     data: sessionsConverter.getChartJSConvertedData(data),
     options: {
       legend: {
-        position: 'top',
+        position: 'top'
       },
       title: {
         display: true,
@@ -25,13 +25,13 @@ function getConfig(data, title){
           beginAtZero: true
         }
       },
-      tooltips:{
-        enabled:true,
-        callbacks:{
-          label: function(tooltipItem, data){
-            var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
-            //This will be the tooltip.body
-            return datasetLabel + ' : ' + tooltipItem.yLabel +' : '+ data.datasets[tooltipItem.datasetIndex].notes[tooltipItem.index];
+      tooltips: {
+        enabled: true,
+        callbacks: {
+          label: function label(tooltipItem, chartData) {
+            var datasetLabel = chartData.datasets[tooltipItem.datasetIndex].label || '';
+            // This will be the tooltip.body
+            return datasetLabel + ' : ' + tooltipItem.yLabel + ' : ' + chartData.datasets[tooltipItem.datasetIndex].notes[tooltipItem.index];
           }
         }
       }
