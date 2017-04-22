@@ -17,7 +17,11 @@
     "moment": "2.18.1"
   },
   "devDependencies": {
+    "babel-eslint": "6.1.2",
     "browserify": "14.3.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb-es5": "1.1.0",
+    "eslint-plugin-react": "6.10.3",
     "rimraf": "2.6.1",
     "uglifyjs": "2.4.10"
   },
@@ -27,6 +31,7 @@
     "build:module-minified": "uglifyjs ./dist/outcome-graph.js -mc > ./dist/outcome-graph.min.js",
     "build:bundle-minified": "uglifyjs ./dist/outcome-graph.bundle.js -mc > ./dist/outcome-graph.bundle.min.js",
     "build:clean": "rimraf ./dist/*",
+    "lint": "eslint ./src/*.js",
     "prebuild": "npm run build:clean",
     "build": "npm run build:module && npm run build:module-minified && npm run build:bundle && npm run build:bundle-minified"
   }
