@@ -17,10 +17,14 @@
     "moment": "2.18.1"
   },
   "devDependencies": {
-    "browserify": "14.3.0"
+    "browserify": "14.3.0",
+    "uglifyjs": "2.4.10"
   },
   "scripts": {
-    "build:module":"browserify ./src/index.js --standalone outcomeGraph --ignore chart.js --ignore moment --ignore chartjs-color --ignore distinct-colors > ./dist/outcome-graph.js",
-    "build:bundle":"browserify ./src/index.js --standalone outcomeGraph > ./dist/outcome-graph.bundle.js"
+    "build:module": "browserify ./src/index.js --standalone outcomeGraph --ignore chart.js --ignore moment --ignore chartjs-color --ignore distinct-colors > ./dist/outcome-graph.js",
+    "build:bundle": "browserify ./src/index.js --standalone outcomeGraph > ./dist/outcome-graph.bundle.js",
+    "build:module-minified": "uglifyjs ./dist/outcome-graph.js -mc > ./dist/outcome-graph.min.js",
+    "build:bundle-minified": "uglifyjs ./dist/outcome-graph.bundle.js -mc > ./dist/outcome-graph.bundle.min.js",
+    "build": "npm run build:module && npm run build:module-minified && npm run build:bundle && npm run build:bundle-minified"
   }
 }
