@@ -23,7 +23,8 @@
     "eslint-config-airbnb-es5": "1.1.0",
     "eslint-plugin-react": "6.10.3",
     "rimraf": "2.6.1",
-    "uglifyjs": "2.4.10"
+    "uglifyjs": "2.4.10",
+    "watchify": "3.9.0"
   },
   "scripts": {
     "build:module": "browserify ./src/index.js --standalone outcomeGraph --ignore chart.js --ignore moment --ignore chartjs-color --ignore distinct-colors > ./dist/outcome-graph.js",
@@ -33,6 +34,7 @@
     "build:clean": "rimraf ./dist/*",
     "lint": "eslint ./src/*.js",
     "prebuild": "npm run build:clean",
-    "build": "npm run build:module && npm run build:module-minified && npm run build:bundle && npm run build:bundle-minified"
+    "build": "npm run build:module && npm run build:module-minified && npm run build:bundle && npm run build:bundle-minified",
+    "watch:bundle" : "watchify ./src/index.js --standalone outcomeGraph -o ./dist/outcome-graph.bundle.js -v"
   }
 }
