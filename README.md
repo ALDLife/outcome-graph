@@ -1,6 +1,6 @@
 # Outcome Graph
 
-Library using Chart.js to create radar chart for visualising numerous therap sessions.
+Library using Chart.js to create radar chart for visualising numerous therapy sessions.
 
 ## Getting started
 
