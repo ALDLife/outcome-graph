@@ -20269,8 +20269,13 @@ return hooks;
 var Chart = require('chart.js');
 var sessionsConverter = require('./sessionsConverter.js')();
 
-function getOutcomeGraph(div, title, data) {
+function getOutcomeGraph(canvasDiv, title, data) {
   var chartConfig = getConfig(data, title);
+  var canvasElement = document.getElementById(canvasDiv);
+  if (canvasElement === null){
+    throw "The canvas element specified does not exist!";
+  }
+  
   return new Chart(document.getElementById(div), chartConfig);
 }
 
@@ -20315,7 +20320,7 @@ var moment = require('moment');
 var distinctColors = require('distinct-colors');
 
 // module pattern
-module.exports = function SessionConverter() {
+module.exports = function SessionsConverter() {
   // variable to keep track of different labels
   var labels = [];
   // labels set for checking if label is unique
