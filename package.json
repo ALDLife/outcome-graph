@@ -1,12 +1,13 @@
 {
   "name": "outcome-graph",
   "version": "1.0.0",
-  "description": "Create radar charts visualise numerous sessions",
+  "description": "Create radar charts to visualise numerous sessions",
   "repository": {
     "type": "git",
     "url": "https://github.com/ALDLife/outcome-graph.git"
   },
   "license": "MIT",
+  "main":"src/index.js",
   "bugs": {
     "url": "https://github.com/ALDLife/outcome-graph.git"
   },
