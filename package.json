@@ -1,16 +1,17 @@
 {
-  "name": "outcome-graph",
+  "name": "@ald-life/outcome-graph",
   "version": "1.0.0",
-  "description": "Create radar charts to visualise numerous sessions",
+  "description": "Create radar charts to visualise numerous therapy sessions",
   "repository": {
     "type": "git",
     "url": "https://github.com/ALDLife/outcome-graph.git"
   },
   "license": "MIT",
-  "main":"src/index.js",
+  "main": "src/index.js",
   "bugs": {
-    "url": "https://github.com/ALDLife/outcome-graph.git"
+    "url": "https://github.com/ALDLife/outcome-graph/issues"
   },
+  "homepage": "https://github.com/ALDLife/outcome-graph#readme",
   "dependencies": {
     "chart.js": "2.5.0",
     "chartjs-color": "2.1.0",
