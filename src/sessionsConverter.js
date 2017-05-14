@@ -5,7 +5,7 @@ var moment = require('moment');
 var distinctColors = require('distinct-colors');
 
 // module pattern
-module.exports = function SessionConverter() {
+module.exports = function SessionsConverter() {
   // variable to keep track of different labels
   var labels = [];
   // labels set for checking if label is unique
