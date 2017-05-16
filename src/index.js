@@ -10,7 +10,7 @@ function getOutcomeGraph(canvasDiv, title, data) {
     throw "The canvas element specified does not exist!";
   }
   
-  return new Chart(document.getElementById(div), chartConfig);
+  return new Chart(document.getElementById(canvasDiv), chartConfig);
 }
 
 function getConfig(data, title) {
