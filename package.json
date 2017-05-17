@@ -1,6 +1,6 @@
 {
   "name": "@ald-life/outcome-graph",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create radar charts to visualise numerous therapy sessions",
   "repository": {
     "type": "git",
@@ -37,6 +37,6 @@
     "lint": "eslint ./src/*.js",
     "prebuild": "npm run build:clean",
     "build": "npm run build:module && npm run build:module-minified && npm run build:bundle && npm run build:bundle-minified",
-    "watch:bundle" : "watchify ./src/index.js --standalone outcomeGraph -o ./dist/outcome-graph.bundle.js -v"
+    "watch:bundle": "watchify ./src/index.js --standalone outcomeGraph -o ./dist/outcome-graph.bundle.js -v"
   }
 }
